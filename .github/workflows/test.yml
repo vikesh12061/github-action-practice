@@ -34,3 +34,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Step no 1
+        run: |
+          ls -l;
+          pwd;
+          cat /etc/*release;
+          arch;
+          lscpu;
+      
