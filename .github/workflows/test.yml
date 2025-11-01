@@ -43,3 +43,19 @@ jobs:
           arch;
           lscpu;
       
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1
+        run: |
+         pwd
+
+  producion:
+    name: This is for production
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    steps:
+      - name: step 1
+        run: |
+          pwd    
+
