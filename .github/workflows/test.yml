@@ -55,7 +55,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo 'The User name is ${{ github.events.input.name }}'
+          echo 'The User name is ${{ github.event.inputs.name }}'
 
       - name: Step no 1
         run: |
