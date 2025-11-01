@@ -12,6 +12,28 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      name:
+        type: string
+        description: Name of candidate
+        default: vikesh
+      height:
+        type: number
+        description: Height of candidate
+        default: 175
+
+      qualification:
+        type: choice
+        description: qualification 
+        default: be
+        options:
+          - btech
+          - bca
+          - mca
+        
+
+        
+        
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
