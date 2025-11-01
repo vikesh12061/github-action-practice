@@ -55,7 +55,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo test, and deploy your project.
+          echo '${{ toJSON(github) }}'
 
       - name: Step no 1
         run: |
