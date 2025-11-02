@@ -32,13 +32,13 @@ on:
   #         - mca
         
 
-env:
-  name: vikesh
-  weight: 80
-  qualification: BE
         
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  MY_VAR: HelloWorld
+  USERNAME: ${{var.USERNAME}}
+  PASSWORD: ${{secrete.PASSWORD}}
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -46,25 +46,23 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    env:
-      weight: 70
-      qualification: BE
+    
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
-        env:
-          qualification: bse         
+        run: echo Hello, world!        
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          printenv
+          echo "MY_VAR is $MY_VAR"
           echo 'The User name is ${{ toJSON(github) }}'
+          echo 'The User name is ${{ env.USERNAME }}'
+          echo 'The User name is ${{ env.PASSWORD }}'
 
       - name: Step no 1
         run: |
@@ -79,8 +77,8 @@ jobs:
     steps:
       - name: step 1
         run: |
-         pwd
          printenv
+         pwd
          echo 'The User name is ${{ toJSON(github) }}'
 
   producion:
