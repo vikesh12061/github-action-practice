@@ -37,8 +37,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 env:
   MY_VAR: HelloWorld
-  USERNAME: $USERNAME
-  PASSWORD: $PASSWORD
+  USERNAME: ${{ vars.USERNAME }}
+  PASSWORD: ${{ secrets.PASSWORD }}
 jobs:
   # This workflow contains a single job called "build"
   build:
