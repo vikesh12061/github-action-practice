@@ -11,28 +11,31 @@ on:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    inputs:
-      name:
-        type: string
-        description: Name of candidate
-        default: vikesh
-      height:
-        type: number
-        description: Height of candidate
-        default: 175
+  # workflow_dispatch:
+  #   inputs:
+  #     name:
+  #       type: string
+  #       description: Name of candidate
+  #       default: vikesh
+  #     height:
+  #       type: number
+  #       description: Height of candidate
+  #       default: 175
 
-      qualification:
-        type: choice
-        description: qualification 
-        default: be
-        options:
-          - btech
-          - bca
-          - mca
+  #     qualification:
+  #       type: choice
+  #       description: qualification 
+  #       default: be
+  #       options:
+  #         - btech
+  #         - bca
+  #         - mca
         
 
-        
+env:
+  name: vikesh
+  weight: 80
+  qualification: BE
         
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -43,6 +46,9 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    env:
+      weight: 70
+      qualification: BE
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -50,12 +56,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+        env:
+          qualification: bse         
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo 'The User name is ${{ github.event.inputs.name }}'
+          echo 'The User name is ${{ toJSON(github) }}'
 
       - name: Step no 1
         run: |
@@ -71,6 +79,7 @@ jobs:
       - name: step 1
         run: |
          pwd
+         echo 'The User name is ${{ toJSON(github) }}'
 
   producion:
     name: This is for production
