@@ -35,10 +35,7 @@ on:
         
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-env:
-  MY_VAR: HelloWorld
-  USERNAME: ${{ vars.USERNAME }}
-  PASSWORD: ${{ secrets.PASSWORD }}
+
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -60,9 +57,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo "MY_VAR is $MY_VAR"
-          echo 'The User name is ${{ toJSON(github) }}'
-          echo 'The User name is $USERNAME'
-          echo 'The User name is $PASSWORD'
+          echo "The User name is $USERNAME"
+          echo "The User name is $PASSWORD"
+
+        env:
+         MY_VAR: HelloWorld
+         USERNAME: ${{ vars.USERNAME }}
+         PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Step no 1
         run: |
