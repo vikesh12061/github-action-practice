@@ -63,6 +63,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
+          printenv
           echo 'The User name is ${{ toJSON(github) }}'
 
       - name: Step no 1
@@ -79,6 +80,7 @@ jobs:
       - name: step 1
         run: |
          pwd
+         printenv
          echo 'The User name is ${{ toJSON(github) }}'
 
   producion:
